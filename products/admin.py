@@ -33,3 +33,4 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Item,ItemAdmin,OrderItemInline,OrderAdmin,OrderItemAdmin)
+
