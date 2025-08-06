@@ -9,17 +9,18 @@ class UserProfile(models.Model):
     # Link to Django's built in user model
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     
-    # This field for storing name of the user
-    name = models.CharField(max_length=100)
+    # This field stores the name of the user
+    name = models.CharField(max_length=100, blank=True)
 
-    # This field for storing Email of the user
-    email = models.EmailField(max_length=225)
+    # This field stores the Email of the user
+    email = models.EmailField(max_length=225, blank=True)
 
-    # this field for storing Contact number of the user
-    phone_number = models.CharField(max_length=15)
+    # this field stores the Contact number of the user
+    phone_number = models.CharField(max_length=15, null=True)
 
     def __str__(self):
         """
         Return the full name of the user if available; otherwise , fall back to the 'name' field.
         """
-        return self.user.get_full_name() or self.name
+        full_name = self.user.get_full_name()
+        return full_name if full_name else self.name
