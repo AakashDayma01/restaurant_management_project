@@ -32,4 +32,4 @@ class OrderItemAdmin(admin.ModelAdmin):
     search_fields = ['order__id','item__item_name']
 
 # Register your models here.
-admin.site.register(Item,ItemAdmin)
+admin.site.register(Item,ItemAdmin,OrderItemInline,OrderAdmin,OrderItemAdmin)
