@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset='UTF-8'>
@@ -36,13 +35,13 @@
         }
         .price{
             color: #ff6f61;
-            font-weigth:bold;
+            font-weight:bold;
         }
     </style>
-    </head>
-    <body>
+</head>
+<body>
         <header>
-        <h1>Our Restaurant Menu</h1>
+            <h1>Our Restaurant Menu</h1>
         </header>
 
     <div class='menu-container'>
