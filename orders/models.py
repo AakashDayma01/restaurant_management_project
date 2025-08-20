@@ -11,8 +11,8 @@ class Order(models.Model):
         ('CANCELLED','Cancelled'),
     ]
 
-    Customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
-    total_amount= models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
+    total= models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     status = models.CharField(max_length=20, choices= STATUS_CHOICES, default="PENDING")
     created_at = models.DateTimeField(auto_now_add = True)
 
@@ -22,12 +22,13 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="items")
-    menu_item = models.ForeignKey(Menu, on_delete = models.CASCADE)
+    menu_item = models.ForeignKey(Menu, on_delete = models.PROTECT)
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return f"{self.quantity} x {self.menu_item.name}"
 
+    @property
     def get_subtotal(self):
         return self.menu_item.price * self.quantity
 
